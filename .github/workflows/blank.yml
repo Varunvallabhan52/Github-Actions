@@ -45,3 +45,4 @@ jobs:
           title: ${{ github.event.issue.title }}
           DATE: ${{ github.event.issue.created_at }}
           body: ${{ github.event.issue.body }}
+        run: |
