@@ -41,9 +41,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
       - name: Fetch events
         env:
-          ID: ${{ github.event.id }}
+          ID: ${{ github.event.issue.id }}
           title: ${{ github.event.issue.title }}
           DATE: ${{ github.event.issue.created_at }}
-        run: |
-          
-          echo $title
+          body: ${{ github.event.issue.body }}
