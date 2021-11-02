@@ -34,14 +34,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Turn comment into file
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          ID=${{ github.event.comment.id }}
-          AUTHOR=${{ github.event.comment.user.login }}
-          DATE=${{ github.event.comment.created_at }}
-          COMMENT=$(echo "${{ github.event.comment.body }}")
-          NO_TAGS=${COMMENT//[<>]/\`}
-          FOLDER=comments
-
-          printf '%b\n' "<div class=\"comment\"><p>${AUTHOR} says:</p><p>${NO_TAGS//$'\n'/\<\/p\>\<p\>}</p><p>${DATE}</p></div>\r\n" > /index.html
-
+          echo "$GITHUB_CONTEXT"
