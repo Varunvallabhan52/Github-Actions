@@ -41,10 +41,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
       - name: Fetch events
         run: |
-          ID=${{ github.event.comment.id }}
-          AUTHOR=${{ github.event.comment.user.login }}
-          DATE=${{ github.event.comment.created_at }}
-          COMMENT=$(echo "${{ github.event.comment.body }}")
-          NO_TAGS=${COMMENT//[<>]/\`}
-          FOLDER=comments
-          echo "$COMMENT"
+          ID=${{ github.event.issues.id }}
+          AUTHOR=${{ github.event.issues.actor }}
+          DATE=${{ github.event.issues.created_at }}
+          
