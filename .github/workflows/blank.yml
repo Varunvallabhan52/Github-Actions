@@ -43,7 +43,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@master
         with:
           role-to-assume: arn:aws:iam::830303460469:role/Github-actions-SQS-us-east-2
-          aws-region: us-east-2
+          aws-region: us-west-2
      #- name: Dump GitHub context
      #   env:
      #     GITHUB_CONTEXT: ${{ toJson(github) }}
