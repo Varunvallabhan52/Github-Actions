@@ -34,11 +34,17 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      
+      - name: Setup AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::830303460469:role/Github-actions-SQS-role
+          aws-region: us-east-2
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo "$GITHUB_CONTEXT"
+          aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/830303460469/githubtest --delay-seconds 10 --message-attributes ${{ toJson(github) }}
       - name: Fetch events
         env:
           ID: ${{ github.event.id }}
