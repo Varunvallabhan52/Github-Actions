@@ -44,11 +44,11 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::830303460469:role/Github-actions-SQS-us-east-2
           aws-region: us-west-2
-     #- name: Dump GitHub context
-     #   env:
-     #     GITHUB_CONTEXT: ${{ toJson(github) }}
-     #   run: |
-     #     aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/830303460469/githubtest --message-body "New Issue reported" --delay-seconds 10 --message-attributes ${{ toJson(github) }}
+      - name: Dump GitHub context
+        env:
+           GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+           aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/830303460469/githubtest --message-body "${{ github.event.issue.body }}" --delay-seconds 1 
       
       - uses: isbang/sqs-action@v0.1.1
         with:
