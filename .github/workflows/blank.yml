@@ -48,7 +48,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/830303460469/githubtest --delay-seconds 10 --message-attributes ${{ toJson(github) }}
+          aws sqs send-message --queue-url https://sqs.us-west-2.amazonaws.com/830303460469/githubtest --message-body "New Issue reported" --delay-seconds 10 --message-attributes ${{ toJson(github) }}
       - name: Fetch events
         env:
           ID: ${{ github.event.id }}
