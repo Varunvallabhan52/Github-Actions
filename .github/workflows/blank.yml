@@ -42,8 +42,8 @@ jobs:
       - name: Setup AWS Credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
-          role-to-assume: arn:aws:iam::830303460469:role/Github-actions-SQS-us-east-2
-          aws-region: us-west-2
+          role-to-assume: arn:aws:iam::536384394542:role/GithubActionsSQSRole-test-us-east-1
+          aws-region: us-east-1
      # - name: Dump GitHub context
        # env:
         #   GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -52,7 +52,7 @@ jobs:
       
       - uses: isbang/sqs-action@v0.1.1
         with:
-          sqs-url: https://sqs.us-west-2.amazonaws.com/830303460469/githubtest
+          sqs-url: https://sqs.us-east-1.amazonaws.com/536384394542/GithubActionsStack-test-us-east-1-GithubK8PluginJavaQueueB4303C23-SDS6R7MCADJP
           message: ${{ toJSON(github) }}
       
       - name: Fetch events
