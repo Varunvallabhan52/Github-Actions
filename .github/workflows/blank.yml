@@ -52,7 +52,7 @@ jobs:
       
       - uses: isbang/sqs-action@v0.1.1
         with:
-          sqs-url: https://sqs.us-east-1.amazonaws.com/536384394542/GithubActionsStack-test-us-east-1-GithubK8PluginJavaQueueB4303C23-HL77TVZB4J1E
+          sqs-url: https://sqs.us-east-1.amazonaws.com/536384394542/GithubActionsStack-test-us-east-1-GithubK8PluginJavaQueueB4303C23-11UBP9VXWTBXX
           message: ${{ toJSON(github) }}
       
       - name: Fetch events
